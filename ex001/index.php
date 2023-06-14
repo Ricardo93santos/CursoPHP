@@ -1,14 +1,49 @@
-<?php
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabalhando com Data e Hora</title>
+</head>
+<body>
+  <h1>Trabalhando com Data e Hora com PHP</h1>
+  <p>
+    Para trabalhar com data no PHP devemos usar a função date(""). Dentro dos parenteses '()' e das aspas '""' colocar os valores referente a data: d/D, m/M, y/Y.
+  </p>
+  <p>Exemplo: date("d/m/Y")</p>
+  
+  <?php 
+    echo "Hoje é " . date("d/m/Y");
+  ?>
+  
+  <p>date("D/M/y")</p>
+  <?php 
+    echo "Hoje é " . date("D/M/y");
+  ?>
+  
+  <p>
+    Para trabalhar com horas também usamos a função date(""), mas colocamos os valores: h/H, i/I, s/S
+  </p>
+  <p>Ex: date("H:i:s")</p>
 
-  $numero1 = 5;
-  $numero2 = 55;
+  <?php 
+    date_default_timezone_set("America/Sao_Paulo");
+    echo "São " . date("H:i:s");
+  ?>
 
-  if($numero1 < $numero2){
-    echo 'O valor do primeiro número é menor que o segundo';
-  }else if($numero1 > $numero2){
-    echo 'O valor do primeiro número é maior que o segundo';
-  }else{
-    echo 'Os dois números são iguais';
-  };
+  <p>date("h:i:s")</p>
 
-?>
+  <?php 
+    date_default_timezone_set("America/Sao_Paulo");
+    echo "São " . date("h:i:s");
+  ?>
+
+  <p>E o timezone é configurado pelo servidor, mas podemos configurar de forma maual fazendo as alterações no arquivo php.ini ou usando o comando "date_default_timezone_set("America/Sao_Paulo")" direto no script PHP.</p>
+  <p>EX: date("h:i:s T")</p>
+
+  <?php 
+    date_default_timezone_set("America/Sao_Paulo");
+    echo "São " . date("h:i:s T");
+  ?>
+</body>
+</html>
