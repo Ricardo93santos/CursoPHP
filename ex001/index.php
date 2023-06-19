@@ -22,16 +22,16 @@
   ?>
   
   <p>
-    Para trabalhar com horas também usamos a função date(""), mas colocamos os valores: h/H, i/I, s/S
+    Para trabalhar com horas também usamos a função date(""), mas colocamos os valores: g/G ou h/H, i, s. Com g as horas são definidas sem 0 a esquerda quando o valor é menor que 10, já com h o é usado um 0 a esquerda quando a hora for menor que 10.
   </p>
-  <p>Ex: date("H:i:s")</p>
+  <p>Ex: date("H:i:s"), onde formata as horas em 24h</p>
 
   <?php 
     date_default_timezone_set("America/Sao_Paulo");
     echo "São " . date("H:i:s");
   ?>
 
-  <p>date("h:i:s")</p>
+  <p>date("h:i:s"), onde formata as horas em 12h</p>
 
   <?php 
     date_default_timezone_set("America/Sao_Paulo");
@@ -39,11 +39,16 @@
   ?>
 
   <p>E o timezone é configurado pelo servidor, mas podemos configurar de forma maual fazendo as alterações no arquivo php.ini ou usando o comando "date_default_timezone_set("America/Sao_Paulo")" direto no script PHP.</p>
-  <p>EX: date("h:i:s T")</p>
+  <p>EX: date("G:i:s T")</p>
 
   <?php 
     date_default_timezone_set("America/Sao_Paulo");
-    echo "São " . date("h:i:s T");
+    echo "São " . date("G:i:s T");
+  ?>
+  <p>E para definir as horas com am ou pm basta usar o comando date no seguinte formato: <em>date("h:i a")</em></p>
+  <?php 
+    date_default_timezone_set("America/Sao_Paulo");
+    echo "Agora são " . date("h:i a");
   ?>
 </body>
 </html>
