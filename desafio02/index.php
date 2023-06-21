@@ -13,14 +13,20 @@
       $hora_completa = date("H:i:s");
 
       if($hora_completa < "12:00:00" && $hora_completa >= "05:00:00"){
-        echo "Bom dia, agora são " . $hora_completa;
+        echo "<p>Bom dia, agora são $hora_completa</p>";
       }else if($hora_completa >= "12:00:00" && $hora_completa < "19:00:00"){
-        echo  "Boa tarde, agora são " . $hora_completa;
+        echo  "<p>Boa tarde, agora são $hora_completa</p>";
       }else {
-        echo "Boa noite, agora são " . $hora_completa;
+        echo "<p>Boa noite, agora são $hora_completa</p>";
       }
     };
     relogio();
+
+    function mostrar_mes(){
+      $mes_atual = date("M");
+
+      echo "$mes_atual";
+    }
 
     function criar_linha($semana){
       // Função para criar as células referentes aos dias da semana
@@ -51,9 +57,15 @@
     }
 
     function criar_calendario(){
-      // Função responsável para criar os dias da semana e atribui - los em cada semana
+      //Função responsável para criar os dias da semana
+      $primeiro_dia_mes = date("01/m/Y");
+      $primeiro_dia_semana = date("N", strtotime($primeiro_dia_mes));
       $dia = 1;
       $semana = array();
+
+      for($i = 1; $i < $primeiro_dia_semana; $i++){
+        array_push($semana, null);
+      }
 
       while($dia <=31){
         array_push($semana, $dia);
@@ -68,7 +80,9 @@
     }
 
   ?>
+
   <table border="1">
+    <?php mostrar_mes();?>
     <th>Dom</th>
     <th>Seg</th>
     <th>Ter</th>
