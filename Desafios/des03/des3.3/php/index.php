@@ -12,16 +12,17 @@
   </header>
   <main>
     <?php 
-      $valor = (float)$_POST["valor"];
+      $valor = (float)$_POST["valor"] ?? 0;
 
       function converterMoeda($valor){
         $valorDolar = 5.22;
         $cambio = $valor/$valorDolar;
-        return number_format($cambio, 2);
+        return number_format($cambio, 2, ",", ".");
       }
       $cambio = converterMoeda($valor);
-
-      echo "<p> Seus R$ $valor equivalem a U$$ $cambio</p>";
+      $valor_real = number_format($valor, 2, ",", ".");
+      
+      echo "<p> Seus R$ $valor_real equivalem a U$$ $cambio</p>";
     ?>
 
     <p><strong>*Cotação fixa de R$5,22</strong></p>
