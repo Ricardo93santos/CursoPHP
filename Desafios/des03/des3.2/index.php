@@ -13,7 +13,7 @@
     <form method="post">
       <p>Gerando um número aleatório entre 0 e 100</p>
       <?php 
-        $gera = rand(0,100);
+        $gera = mt_rand(0,100);
 
         echo "<p>O valor gerado foi $gera</p>"
       ?>
