@@ -41,9 +41,9 @@
       }
       $cambio = converterMoeda($valor_real, $valor_dolar);
 
-      $padrao = numfmt_create("pt_BR", NumberFormatter::CURRENCY); //Para alterar o padrão basta trocar a string do idioma do país, "us", "pt_PT", "ru_RU
+      $padrao = numfmt_create("pt-BR", NumberFormatter::CURRENCY); //Para alterar o padrão basta trocar a string do idioma do país, "us", "pt_PT", "ru_RU
 
-      echo "<p> Seus" .  numfmt_format_currency($padrao, $valor, "BRL") ." equivalem a " . numfmt_format_currency($padrao, $cambio, "USD") ."</p>";
+      echo "<p> Seus " .  numfmt_format_currency($padrao, $valor_real, "BRL") ." equivalem a " . numfmt_format_currency($padrao, $cambio, "USD") ."</p>";
   
     ?>
 

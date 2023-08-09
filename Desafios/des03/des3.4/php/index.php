@@ -12,8 +12,7 @@
   </header>
   <main>
     <?php 
-      $valorDolar = file_get_contents("https://api.hgbrasil.com/weather?woeid=452041");
-      echo "$valorDolar"
+      
     ?>
     <p><strong>*Cotação recebida pela API do Banco Central do Brasil</strong></p>
     <input type="button" id="btnVoltar" value="Voltar">
