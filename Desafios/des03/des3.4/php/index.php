@@ -13,7 +13,7 @@
   <main>
     <?php
       //Função para receber a cotação do dolar
-      function receber_cotacao_dolar(){
+      function receberCotacaoDolar(){
         
         //Variável referente a URL da cotação do Banco Central
         $url_cotacao_dolar_compra = 'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial=\'08-03-2023\'&@dataFinalCotacao=\'08-10-2023\'&$top=1&$orderby=dataHoraCotacao%20desc&$format=json&$select=cotacaoCompra,dataHoraCotacao';
@@ -24,7 +24,7 @@
         return $dados_cotacao["value"][0]["cotacaoCompra"];
       }
 
-      $valor_dolar = receber_cotacao_dolar();
+      $valor_dolar = receberCotacaoDolar();
 
       //Valor do real, inserido pelo usuário via POST
       $valor_real = (float)$_POST["valor"] ?? 0;
