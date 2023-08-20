@@ -26,7 +26,8 @@
 
         return $dados_cotacao["value"][0]["cotacaoCompra"];
       }
-
+      
+      //Valor do dolar, recebido via API
       $valor_dolar = receberCotacaoDolar();
 
       //Valor do real, inserido pelo usuário via POST
