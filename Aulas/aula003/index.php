@@ -3,156 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Variáveis e Constantes em PHP</title>
+  <title>Trabalahndo com Strings</title>
 </head>
 <body>
-  <h1>Variáveis e Constantes em PHP</h1>
-  <h2>Variáveis</h2>
-  <p>
-    No PHP, as variáveis são declaradas usando o símbolo de dólar ($) seguido pelo nome da variável. A atribuição de um valor à variável é feita usando o operador de atribuição (=).
-    <code>EX:
-      $nome = "João";
-    </code>
-  </p>
-  <h2>Constantes</h2>
-  <p>
-    As constantes, por outro lado, são declaradas usando a função "define()". O nome da constante é uma string e, por convenção, é geralmente escrita em letras maiúsculas. O valor da constante é definido após o nome, usando o operador de atribuição. 
-    <code>
-      EX: define("MEDIA_MINIMA", 7.0);
-    </code>
-  </p>
-
-  <h2>Uso das Variáveis e Constantes no PHP</h2>
-  <p>
-    A principal diferença entre variáveis e constantes no PHP é que as variáveis podem ter seus valores alterados durante a execução do programa, enquanto as constantes têm um valor fixo que não pode ser alterado depois de declarado. As constantes são úteis quando você precisa definir um valor que não deve ser modificado ao longo do programa.
-  </p>
-  <p>
-    No entanto, é importante ressaltar que as constantes são globais por padrão, o que significa que elas podem ser acessadas em qualquer lugar do seu código. Por outro lado, as variáveis têm escopo e podem ser acessadas apenas dentro do bloco de código em que foram declaradas, a menos que sejam declaradas como globais explicitamente usando a palavra-chave "global".
-  </p>
-  <p>Aqui está um exemplo de como declarar uma variável como global no PHP: 
-    <pre>
-      $variavelGlobal = 10;
-      function minhaFuncao() {
-        global $variavelGlobal;
-        // Agora a variável $variavelGlobal pode ser usada aqui dentro da função
-        echo $variavelGlobal;
-      }
-      minhaFuncao(); // Saída: 10
-      </pre>
-  </p>
-  <p>Vejamos como pode-se usar variáveis e constantes em diferentes contextos:</p>
+  <h1>Trabalhando com Strings no PHP</h1>
+  <p>No PHP existem quatro tipos de Strings:</p>
   <ol>
-    <li>
-      Atribuição de valores:
-      <ul>
-        <li>
-          Variável: 
-          <pre>
-            $nome = "João";
-            $idade = 25;
-          </pre>
-        </li>
-        <li>
-          Constante:
-          <pre>
-            define("PI", 3.14);
-            define("TAXA_DESCONTO", 0.1);
-          </pre>
-        </li>
-      </ul>
-    </li>
-    <li>
-      Utilização de Expressões:
-      <ul>
-        <li>
-          Variável:
-          <pre>
-            $total = $preco * $quantidade;
-          </pre>
-        </li>
-        <li>
-          Constante:
-          <pre>
-            $desconto = $total * TAXA_DESCONTO;
-          </pre>
-        </li>
-      </ul>
-    </li>
-    <li>
-      Exibição de valores:
-      <ul>
-        <li>Variável:
-          <pre>
-            echo "Olá, " .$nome . "! Você tem " . $idade . " anos."; //Concatenação com .
-            echo "Olá, $nome! Você tem $idade anos."; //Sem concatenação
-          </pre>
-        </li>
-        <li>
-          Constante:
-          <pre>
-            echo "O valor da média final tem que ser " . MEDIA_MINIMA;
-            /* Constantes só podem ser usadas com concatenação com (.),
-            não consegue colocar as mesmas dentro das aspas (""),
-            pois o PHP não identifica a mesma como constante. */
-          </pre>
-        </li>
-      </ul>
-    </li>
-    <li>
-      Utilização em estruturas de controle:
-      <ul>
-        <li>Variável:
-          <pre>
-            if ($idade >= 18) {
-              echo "Você é maior de idade.";
-            } else {
-              echo "Você é menor de idade.";
-            }
-          </pre>
-        </li>
-        <li>Constante:
-          <pre>
-            if ($nota >= NOTA_MINIMA) {
-              echo "Você foi aprovado!";
-            } else {
-              echo "Você foi reprovado.";
-            }
-          </pre>
-        </li>
-      </ul>
-    </li>
+    <li>Double Quoted</li>
+    <li>Single Quoted</li>
+    <li>Heredoc</li>
+    <li>Nowdoc</li>
   </ol>
+  <h3>Double Quoted</h3>
+  <p>
+    Double Quoted é o formato string escrito entre aspas duplas (""). Permite a interpolação de variáveis, ou seja, escrever uma variável dentro da string, onde a mesma será interpretada.     As aspas duplas, <strong>double quoted</strong>, suporta a sequência de escape, o que significa que pode usar caracteres especiais seguida por uma barra invertida (\). Também permite (\n) para quebra de linha e (\t) para tabulações.
+  </p>
 
-  <?php 
-    $idade = 8;
+  <pre>
+    Ex:
+    $nome = "Ricardo";
+    echo "Olá, $nome! \u{1F600}"; //Saída: Olá, Ricardo!😄
+  </pre>
+  <h3>Single Quoted</h3>
+  <p>
+    Single Quoted é o formato string escrito entre aspas simples (''). Não permite a interpolação de variáveis, as variáveis escritas entre elas são tratadas literalmente. As aspas simples, <strong>single quoted</strong>, não suporta a maioria das sequências de escape, com exceção de (\') aspas simples e (\\) barra invertida unica.
+  </p>
+  <pre>
+    Ex:
+    $nome = "Ricardo";
+    echo 'Olá, $nome! \u{1F600}'; //Saída: Olá, $nome! \u{1F600}
+  </pre>
+  <p>
+    Como as single quoted não faz interpolação, devemos fazer a concatenação das strings usando um ponto (.).
+  </p>
+  <pre>
+    Ex:
+    $nome = "Ricardo";
+    $apelido = 'Rick';
+    echo 'Meu nome é ' . $nome ' . e meu apelido é ' . '\''.$apelido.'\'';
+    // Saída: Meu nome é Ricardo e meu apelido é 'Rick'.
+  </pre>
+  <h3>Heredoc e Nowdoc</h3>
+  <p>
+    Heredoc e Nowdoc são duas formas de delimitqar strings de múltiplas linhas. Eles oferecem uma maneira conveniente de incluit blocos extensos de texto sem a necessidade de escapar caracteres especiais ou quebras de linhas. A diferenças é que na <strong>Heredoc</strong> permite interpolação de variáveis e suporta sequência de escape, já a <strong>Nowdoc</strong> não permite.
+  </p>
+  <p>
+  A sintaxe das duas também possue diferenças, ambas começam com uma sequencia de três sinais de menor que (<<<) seguida por uma palavra qualquer escrita em letras maiúsculas e finaliza o bloco com a mesma palavra seguuida do ponto e virgula (;). Mas na Nowdoc essa palavra é escrita entre aspas simples.
+  </p>
+  <pre>
+    Ex:
+    Heredoc
+      $nome = "Ricardo";
+      $saudacao = <<< TEXTO
+        Olá, $nome!
+          Bem vindo ao nosso site!
+      TEXTO;
+      
+      /* Saída:
+        Olá, Ricardo!
+          Bem vindo ao nosso site!
+      */
 
-    function verificarIdade(){
-      global $idade;
-      if($idade >= 18){
-        echo "Você é maior de idade, tem $idade anos. \n";
-      }else{
-        echo "Você é menor de idade, tem $idade anos. \n";
-      }
-    }
+    Nowdoc
+      $nome = "Ricardo";
+      $saudacao = <<< 'TEXTO'
+        Olá, $nome!
+          Bem vindo ao nosso site!
+      TEXTO;
 
-    verificarIdade();
-  ?>
-  <?php 
-    $nota1 = 7;
-    $nota2 = 8;
-    $media = ($nota1+$nota2)/2;
-    $nomeAluno = "Ricardo";
-    function verificarAprovacao($nomeAluno){
-      global $media;
-      define("MEDIA_MINIMA", 7.0);
-
-      if($media >= MEDIA_MINIMA){
-        echo "$nomeAluno, você foi aprovado com a média final de " . MEDIA_MINIMA . "\n";
-      }else{
-        echo "$nomeAluno, você foi reprovado com a média final de " . MEDIA_MINIMA ."\n";
-      }
-    }
-    verificarAprovacao($nomeAluno)
-  ?>
+      /* Saída:
+        Olá, $nome!
+          Bem vindo ao nosso site!
+      */
+  </pre>
 </body>
 </html>
