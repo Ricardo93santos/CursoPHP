@@ -15,31 +15,35 @@
     <h1>Anatomia de uma Divisão</h1>
     <form action="<?=$_SERVER["PHP_SELF"]?>" method="post">
       <label for="dividendo">Dividendo</label>
-      <input type="number" name="dividendo" id="dividendo" value="<?=$dividendo?>">
+      <input type="number" name="dividendo" id="dividendo" min="0" value="<?=$dividendo?>">
       <label for="divisor">Divisor</label>
-      <input type="number" name="divisor" id="divisor" value="<?=$divisor?>">
+      <input type="number" name="divisor" id="divisor" min="1" value="<?=$divisor?>">
       <input type="submit" value="Analisar">
     </form>
   </main>
   <section>
     <?php 
       function calcularDivisao($dividendo, $divisor){
-        $quosiente = $dividendo / $divisor;
-        return number_format($quosiente, 0);
+        $quosiente = intdiv($dividendo, $divisor) ;
+        return $quosiente;
       }
       function calcularRestoDivisao($dividendo, $divisor){
-        return $resto_divisao = $dividendo % $divisor;
+        $resto_divisao = $dividendo % $divisor;
+        return $resto_divisao;
       }
-
       $quosiente = calcularDivisao($dividendo, $divisor);
       $resto_divisao = calcularRestoDivisao($dividendo, $divisor);
-      
-      echo "<h2>Estrutura da Divisão</h2>";
-      echo "<p>O dividendo é $dividendo</p>";
-      echo "<p>O divisor é $divisor</p>";
-      echo "<p>O quosiente da divisão é $quosiente</p>";
-      echo "<p>O resto da divisão é $resto_divisao</p>";
     ?>
+    <table class="divisao">
+      <tr>
+        <td><?=$dividendo?></td>
+        <td><?=$divisor?></td>
+      </tr>
+      <tr>
+        <td><?=$resto_divisao?></td>
+        <td><?=$quosiente?></td>
+      </tr>
+    </table>
   </section>
 </body>
 </html>
