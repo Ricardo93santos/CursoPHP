@@ -8,14 +8,14 @@
 </head>
 <body>
   <?php 
-    $salarioMinimo = 1380.00;
-    $salario = $_POST["salario"] ?? 0;
+    $salarioMinimo = 1380.60;
+    $salario = $_POST["salario"] ?? $salarioMinimo;
   ?>
   <main>
     <h1>Informe seu salário</h1>
     <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
       <label for="salario">Salário (R$)</label>
-      <input type="number" name="salario" min="0" id="salario" value = "<?=$salario?>">
+      <input type="number" name="salario" min="0" id="salario" step="0.01" value = "<?=$salario?>">
       <p>Considerando o salário minimo de <strong>R$<?=number_format($salarioMinimo, 2, ",", ".")?></strong></p>
       <input type="submit" value="Calcular">
     </form>
@@ -23,12 +23,11 @@
   <section>
       <h2>Resultado Final</h2>
       <?php
-
         $quantidadeDeSalariosMinimo = (int) ($salario / $salarioMinimo);
 
-        $fracaoDoSalario = $salario % $salarioMinimo;
-
-        echo "O seu salário é de R$" . number_format($salario, 2, ",", ".") . " e a quantidade de salários minimo que voce recebe é de " .$quantidadeDeSalariosMinimo ." + R$" . number_format($fracaoDoSalario, 2, ",", ".");
+        $fracaoDoSalario = ($salario * 100) % ($salarioMinimo * 100) / 100; //Multiplicar e dividir por 100 para melhorar a precisão do float.
+        
+        echo "<p>O seu salário é de <strong>R$" . number_format($salario, 2, ",", ".") . "</strong> e a quantidade de salários minimo que voce recebe é de<strong> " .$quantidadeDeSalariosMinimo ."</strong> + <strong>R$" . number_format($fracaoDoSalario, 2, ",", ".")."</strong></p>";
       ?>
     </section>
 </body>
