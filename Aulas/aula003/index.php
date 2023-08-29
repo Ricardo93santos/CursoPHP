@@ -3,78 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trabalahndo com Strings</title>
+  <title>Tipos Primitivos no PHP</title>
 </head>
 <body>
-  <h1>Trabalhando com Strings no PHP</h1>
-  <p>No PHP existem quatro tipos de Strings:</p>
-  <ol>
-    <li>Double Quoted</li>
-    <li>Single Quoted</li>
-    <li>Heredoc</li>
-    <li>Nowdoc</li>
-  </ol>
-  <h3>Double Quoted</h3>
-  <p>
-    Double Quoted é o formato string escrito entre aspas duplas (""). Permite a interpolação de variáveis, ou seja, escrever uma variável dentro da string, onde a mesma será interpretada.     As aspas duplas, <strong>double quoted</strong>, suporta a sequência de escape, o que significa que pode usar caracteres especiais seguida por uma barra invertida (\). Também permite (\n) para quebra de linha e (\t) para tabulações.
-  </p>
-
-  <pre>
+  <h1>Tipos Primitivos no PHP</h1>
+  <p>O php é uma linguagem de programação fracamente tipada, ou seja, o seu tipo primitivo é definido de forma dinâmica de acordo é feita a atribuição dos valores. Existe três classes de tipos primitivos no PHP, são: <strong>escalares, compostos e especiais</strong>.</p>
+  <ul>
+    <li>
+    Tipos primitivos escalares:
+    <ol>
+    <li>
+    <strong>String</strong>, é uma cadeia de caracteres, sequencia de letras, números e símbolos, sempre representadas entre aspas simples ou duplas ('' ou " ").
+    <pre>
     Ex:
-    $nome = "Ricardo";
-    echo "Olá, $nome! \u{1F600}"; //Saída: Olá, Ricardo!😄
+    $string1 = "aluno";
+    $string2 = "Ricardo"
+    </pre>
+    </li>
+    <li>
+    <strong>int ou intger</strong>, um valor numérico inteiro, positivo ou negativo, aquele que vem sem a parte decimal.
+    <pre>
+    Ex:
+    $int1 = 12;
+    $intger1 = -12;
+    </pre>
+    </li>
+    <li>
+    <strong>float ou double</strong>, um valor numérico real, positivo ou negativo, que vem com a parte decimal, depois do ponto flutuante ou potencia.
+    <pre>
+    Ex:
+    $float1 = 35.7;
+    $float2 = -35.7;
+    </pre>
+    </li>
+    <li>
+    <strong>bool ou boolean</strong>, um valor lógico que aceita apenas os valores verdadeiro ou falso (true ou false).
+    <pre>
+    Ex:
+    $bool1 = true;
+    $bool2 = false;
+    if($bool1 == $bool2){
+      echo "Verdadeiro";
+    }else{
+      echo "Falso";
+    }
+     // Res Falso
+    </pre>
+    </li>
+    </ol>
+    </li>
+    <li>
+      Tipos primitivos compostos:
+      <ol>
+        <li>Array</li>
+        <li>Object</li>
+        </ol>
+    </li>
+    <li>
+      Tipos primitivos especiais:
+      <ol>
+        <li>null</li>
+        <li>resourse</li>
+        <li>callbe</li>
+        <li>mixed</li>
+      </ol>
+    </li>
+  </ul>
+  <h2>var_dump()</h2>
+  <p>A função var_dump(), é usada para identificar o tipo e o valor de uma variável.</p>
+  <pre>
+  Ex:
+  $nome = "Ricardo";
+  var_dump($nome); // string(7) "Ricardo"
+  $idade = 29;
+  var_dump($idade); // int(29)
+  $peso = 73.8;
+  var_dump($peso); // double(73.8)
+  $casado = true;
+  var_dump($casado); //bool(true)
   </pre>
-  <h3>Single Quoted</h3>
-  <p>
-    Single Quoted é o formato string escrito entre aspas simples (''). Não permite a interpolação de variáveis, as variáveis escritas entre elas são tratadas literalmente. As aspas simples, <strong>single quoted</strong>, não suporta a maioria das sequências de escape, com exceção de (\') aspas simples e (\\) barra invertida unica.
-  </p>
+  <h2>Coerção no PHP</h2>
+  <p>A coerção no PHP é usada para trocar os tipos primitivos de uma variável.</p>
   <pre>
-    Ex:
-    $nome = "Ricardo";
-    echo 'Olá, $nome! \u{1F600}'; //Saída: Olá, $nome! \u{1F600}
-  </pre>
-  <p>
-    Como as single quoted não faz interpolação, devemos fazer a concatenação das strings usando um ponto (.).
-  </p>
-  <pre>
-    Ex:
-    $nome = "Ricardo";
-    $apelido = 'Rick';
-    echo 'Meu nome é ' . $nome ' . e meu apelido é ' . '\''.$apelido.'\'';
-    // Saída: Meu nome é Ricardo e meu apelido é 'Rick'.
-  </pre>
-  <h3>Heredoc e Nowdoc</h3>
-  <p>
-    Heredoc e Nowdoc são duas formas de delimitqar strings de múltiplas linhas. Eles oferecem uma maneira conveniente de incluit blocos extensos de texto sem a necessidade de escapar caracteres especiais ou quebras de linhas. A diferenças é que na <strong>Heredoc</strong> permite interpolação de variáveis e suporta sequência de escape, já a <strong>Nowdoc</strong> não permite.
-  </p>
-  <p>
-  A sintaxe das duas também possue diferenças, ambas começam com uma sequencia de três sinais de menor que (<<<) seguida por uma palavra qualquer escrita em letras maiúsculas e finaliza o bloco com a mesma palavra seguuida do ponto e virgula (;). Mas na Nowdoc essa palavra é escrita entre aspas simples.
-  </p>
-  <pre>
-    Ex:
-    Heredoc
-      $nome = "Ricardo";
-      $saudacao = <<< TEXTO
-        Olá, $nome!
-          Bem vindo ao nosso site!
-      TEXTO;
-      
-      /* Saída:
-        Olá, Ricardo!
-          Bem vindo ao nosso site!
-      */
-
-    Nowdoc
-      $nome = "Ricardo";
-      $saudacao = <<< 'TEXTO'
-        Olá, $nome!
-          Bem vindo ao nosso site!
-      TEXTO;
-
-      /* Saída:
-        Olá, $nome!
-          Bem vindo ao nosso site!
-      */
+  Ex:
+  $num_string = "973";
+  var_dump($num_string); // string(3) 973
+  $num = (int)$num_string;
+  var_dump($num); // int(973)
   </pre>
 </body>
 </html>

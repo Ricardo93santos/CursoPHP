@@ -3,61 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formatar Números no PHP</title>
+  <title>Funções Randômicas no PHP</title>
 </head>
 <body>
-  <h1>Formatar Números Monetários no PHP</h1>
-  <p>No PHP podemos formatar números monetários podemos usar a função <strong>number_format()</strong> e a biblioteca <strong>intl</strong></p>
-  <h2>number_format()</h2>
+  <h1>Trabalhando com Funções Randômicas no PHP</h1>
+  <p>No PHP existe três funções para gerar números aleatórios, as funções são: <strong><u>rand()</u></strong>, <strong><u>mt_rand()</u></strong> e <strong><u>random_int()</u></strong>. Todas recebem dois valores como parâmetros, o primeiro é o <u>mínimo</u> e o segundo é o <u>máximo</u>, que correspondem ao intervalor do gerador. Podemos usar variáveis ou valores diretamente como parâmetros.</p>
   <p>
-    A função <strong>number_format()</strong>, formata um número com os milhares agrupados. Essa função aceita um, dois ou quatro parâmetros (não três). Sua sintaxe é:
+    Ex:
     <pre>
-      number_format(
-        float $number, //O número a ser formatado.
-        int $decimal, //A quantidade de casas decimais.
-        string $dec_point, //String para definir o separador decimal.
-        string $lhousand_sep //Define o separador de milhar. 
-      );
+    $valor_rand = rand(0, 100); 
+    echo "$valor_rand"
+    // ou
+    $min = 0;
+    $max = 100;
+    $valor_rand() = rand($min, $max);
+    echo "$valor_rand"
     </pre>
   </p>
-  <p>Ex:
-    <pre>
-      $number = 1256.897;
-
-      //Notação Inglesa(padrão)
-      $english_format_number = number_format($number);
-      echo "$english_format_number" //1,256
-      
-      //Notação Brasileira
-      $br_number_format = number_format($number);
-      echo "$br_number_format"; // 1.256,89
-    </pre>
-  </p>
-  <h2>Internalization PHP (intil)</h2>
-  <p>A biblioteca <strong>intil</strong>, é usada para formatar números monetários de forma dinâmica.A mesma possue duas funções principais que são usadas para formatar os valores monetários, <strong>numfmt_create(), numfmt_format_currency().</strong></p>
   <ul>
-    <li><strong>numfmt_create()</strong>, essa função é usada para criar o padrão internacional da moeda, recebe dois parâmetros, o primeiro é o idioma do país que a moeda vai ser formatada e o segundo o tipo de número a ser formatado.
-    <pre>
-      ex:
-      $padrão = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
-    </pre>
-  </li>
-    <li><strong>numfmt_format_currency()</strong>, essa função faz a formatação do número selecionado, recebe como parâmetro três valores. O primeiro é o padrão, definido pela função "numfmt_create()", o segundo é o valor a ser formatado, podendo ser uma variável ou valor direto, e por ultimo a sigla da moeda.
-    <pre>
-      Ex:
-      $moeda = 1276.35;
-      $padrao = numfmt_create("pt-BR", NumberFormatter::CURRENCY);
-      echo "numfmt_format_currency($padrao, $moeda,"BRL")"; // R$1.276,36
-    </pre>
-  </li>
+    <li><strong>rand()</strong>, essa função usa um algoritmo de 1951, chamado de <i>Linear Congrential Generator</i>, o mesmo não é mais confiável e é muito lento.</li>
+    <li><strong>mt_rand()</strong>, essa função usa um algoritmo de 1997, chamado de <i>Mersenne Twister</i>, sendo 4x mais ráido e mais confiável que a função rand().</li>
+    <p>OBS: A função rand() pode receber o valor mínimo menor que o valor máximo, mas na função mt_rand() é retornado um erro.</p>
+    <li><strong>random_int()</strong>, é uma função que gera números aleatórios criptografados, sendo mais seguro, porem é o mais lento, ideal para criação de senhas.</li>
   </ul>
-  <p>Para alterar o padão basta alterar o primeiro parâmetro da variável "$padrao", para o idioma do país. EX:
-    <pre>
-      //Padrão Europeu
-      $moeda = 1276.35;
-      $padrao = numfmt_create("pt_PT", NumberFormatter::CURRENCY);
-      echo "numfmt_format_currency($padrao, $moeda,"USD")"; // 1 276,36 US$
-    </pre>
-  </p>
+  <p>EX:</p>
+  <form method="post">
+      <p>Gerando um número aleatório entre 0 e 100</p>
+      <?php 
+        $gera = rand(0,100);
+
+        echo "<p>O valor gerado foi $gera</p>"
+      ?>
+      <p>Aperte F5 para erar novo número.</p>
+    </form>
 </body>
 </html>
