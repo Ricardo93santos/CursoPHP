@@ -37,18 +37,24 @@
     date_default_timezone_set("America/Sao_Paulo");
     echo "São " . date("h:i:s");
   ?>
-
-  <p>E o timezone é configurado pelo servidor, mas podemos configurar de forma maual fazendo as alterações no arquivo php.ini ou usando o comando "date_default_timezone_set("America/Sao_Paulo")" direto no script PHP.</p>
-  <p>EX: date("G:i:s T")</p>
+  <p>Para definir as horas com am ou pm basta usar o comando date no seguinte formato: <em>date("h:i a")</em></p>
+  <?php 
+    date_default_timezone_set("America/Sao_Paulo");
+    echo "Agora são " . date("h:i a");
+  ?>
+  <h2>O que é timezone?</h2>
+  <p>E o timezone é configurado pelo servidor, mas podemos configurar de forma maual fazendo as alterações no arquivo php.ini, procurar pela linha que começa por "date.timezone =" e após o sinal de igual (=) colocar o fuzo horário do pais desejado. Exemplo: <em>date.timezone = America/Sao_Paulo</em>. mas podemos fazer a alteração direto no Script do arquivo .php, usando o comando "date_default_timezone_set("America/Sao_Paulo")".</p>
+  <p>
+  <pre>
+  date_default_timezone_set("America/Sao_Paulo");
+  echo "São " . date("G:i:s T");
+  </pre>
+  </p>
 
   <?php 
     date_default_timezone_set("America/Sao_Paulo");
     echo "São " . date("G:i:s T");
   ?>
-  <p>E para definir as horas com am ou pm basta usar o comando date no seguinte formato: <em>date("h:i a")</em></p>
-  <?php 
-    date_default_timezone_set("America/Sao_Paulo");
-    echo "Agora são " . date("h:i a");
-  ?>
+
 </body>
 </html>
