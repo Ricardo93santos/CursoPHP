@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obter Dados de Formulários no PHP</title>
+</head>
+<body>
+  <h1>Obter dados de Formulários no PHP</h1>
+  <p>Para tratar dados de formulário em PHP devemos usar as tags HTML de formulário, onde os usuários inserirão os dados solicitados. Os formulários usam elementos como "&#8249;form&#8250;", "&#8249;input&#8250;", "&#8249;select&#8250;", "&#8249;textarea&#8250;" e entre outros. Para saber mais sobre os elementos de formulário acesse o site do W3Scholls pelo link <a href="https://www.w3schools.com/html/html_forms.asp">HTML forms</a>.</p>
+  <p>Na tag "&#8249;form&#8250;" escpecificamos os método de envio usando o atributo "method" e o atributo "action" para espesificar para onde os dados do formulário devem ser enviados quando o formulário for submetido. O método mais comim é o "POST", que envia os dados do formulário de forma mais segura e permite enviar uma quantidade maior de dados. O metodo "GET" tmabém pode ser usado, mas ele exibe os dados na URL, o que pode ser menos seguro.</p>
+  <pre>
+    EX:
+    &#8249;form <strong>method = "post"</strong> <strong>action = "processar.php"</strong>&#8250;
+      &#8249;laber for = "nome"&#8250;Nome:&#8249;/label&#8250;
+      &#8249;input type = "text" name = "nome" id = "nome"&#8250;
+      &#8249;laber for = "sobrenome"&#8250;Sobrenome:&#8249;/label&#8250;
+      &#8249;input type = "text" name = "sobrenome" id = "sobrenome"&#8250;
+      &#8249;input type = "submit" value = "Enviar"&#8250;
+    &#8249;/form&#8250;
+  </pre>
+  <p>O resultado será:</p>
+  <form action="processar.php" method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" id="nome">
+    <label for="sobrenome"></label>
+    <input type="text" name="sobrenome" id="sobrenome">
+    <input type="submit" value="Enviar">
+  </form>
+  <p>No PHP os dados enviados são armazenados nos arrays superglobal "&_POST" (quando o metodo é POST)ou no "&_GET" (quando o metodo é GET), depois são tratados conforme a necessidade dos sistema e a lóagica do script.</p>
+  <pre>
+    EX: PHP (processar.php)
+    &#8249;?php
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+      $nome = $_POST["nome"];
+      $sobrenome = $_POST["sobrenome"];
+      if($nome == "" || $sobrenome == ""){
+        echo "Informe o nome e seu sobrenome";
+      }else{
+        echo "Olá, &#8249;strong&#8250;$nome $sobrenome&#8249;/strong&#8250;, seu formulário foi enviado com sucesso!";
+      }
+    }
+    ?&#8250;
+    //Saída: Olá <strong>Ricardo Santos</strong>, seu formulário foi enviado com sucesso! ou Informe o nome e seu sobrenome
+  </pre>
+</body>
+</html>

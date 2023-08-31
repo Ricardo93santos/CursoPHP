@@ -1,47 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obter Dados de Formulários no PHP</title>
+  <title>Superglobais no PHP</title>
 </head>
 <body>
-  <h1>Obter dados de Formulários no PHP</h1>
-  <p>Para tratar dados de formulário em PHP devemos usar as tags HTML de formulário, onde os usuários inserirão os dados solicitados. Os formulários usam elementos como "&#8249;form&#8250;", "&#8249;input&#8250;", "&#8249;select&#8250;", "&#8249;textarea&#8250;" e entre outros. Para saber mais sobre os elementos de formulário acesse o site do W3Scholls pelo link <a href="https://www.w3schools.com/html/html_forms.asp">HTML forms</a>.</p>
-  <p>Na tag "&#8249;form&#8250;" escpecificamos os método de envio usando o atributo "method" e o atributo "action" para espesificar para onde os dados do formulário devem ser enviados quando o formulário for submetido. O método mais comim é o "POST", que envia os dados do formulário de forma mais segura e permite enviar uma quantidade maior de dados. O metodo "GET" tmabém pode ser usado, mas ele exibe os dados na URL, o que pode ser menos seguro.</p>
-  <pre>
-    EX:
-    &#8249;form <strong>method = "post"</strong> <strong>action = "processar.php"</strong>&#8250;
-      &#8249;laber for = "nome"&#8250;Nome:&#8249;/label&#8250;
-      &#8249;input type = "text" name = "nome" id = "nome"&#8250;
-      &#8249;laber for = "sobrenome"&#8250;Sobrenome:&#8249;/label&#8250;
-      &#8249;input type = "text" name = "sobrenome" id = "sobrenome"&#8250;
-      &#8249;input type = "submit" value = "Enviar"&#8250;
-    &#8249;/form&#8250;
-  </pre>
-  <p>O resultado será:</p>
-  <form action="processar.php" method="post">
-    <label for="nome">Nome:</label>
-    <input type="text" name="nome" id="nome">
-    <label for="sobrenome"></label>
-    <input type="text" name="sobrenome" id="sobrenome">
-    <input type="submit" value="Enviar">
-  </form>
-  <p>No PHP os dados enviados são armazenados nos arrays superglobal "&_POST" (quando o metodo é POST)ou no "&_GET" (quando o metodo é GET), depois são tratados conforme a necessidade dos sistema e a lóagica do script.</p>
-  <pre>
-    EX: PHP (processar.php)
-    &#8249;?php
-    if($_SERVER['REQUEST_METHOD']=="POST"){
-      $nome = $_POST["nome"];
-      $sobrenome = $_POST["sobrenome"];
-      if($nome == "" || $sobrenome == ""){
-        echo "Informe o nome e seu sobrenome";
-      }else{
-        echo "Olá, &#8249;strong&#8250;$nome $sobrenome&#8249;/strong&#8250;, seu formulário foi enviado com sucesso!";
-      }
-    }
-    ?&#8250;
-    //Saída: Olá <strong>Ricardo Santos</strong>, seu formulário foi enviado com sucesso! ou Informe o nome e seu sobrenome
-  </pre>
+  <main>
+    <h1>Superglobais PHP</h1>
+    <p>Superglobais no PHP são arrays especiais que armazenam informações globais do ambiente do servidor e da solicitação HTTP, exitem 8 superglobais no PHP. Elas são automaticamente acessíveis de qualquer parte do script PHP, sem a necessidade de declaração adicional.</p>
+    <p>As superglobais são:</p>
+    <ol>
+      <li><strong>$_GET</strong>: Usada para coletar enviados para o script via paraametros de URL, é frequentimente usada para acessar dados de consulta em URLs. <br>Ex: <strong>$_GET['nome']</strong></li>
+  
+      <li><strong>$_POST</strong>: Usada para coletar dados enviados por um formulário HTML, semelhante ao metodo GET, esses dados são invisíveis na URL, o que é útil para informações sensíveis. <br>Ex: <strong>$_POST['senha']</strong></li>
+  
+      <li><strong>$_REQUEST</strong>: Combina dados das superglobais '$_GET', '$_POST' e '$_COOKIE'. Porém seu uso não é recomendado, pois pode ser menos seguro e mais difícil de rastrear a origem dos dados. <br>Ex: <strong>$_REQUEST['senha']</strong></li>
+  
+      <li><strong>$_SESSION</strong>: Usada para manter informações da sessão do usuário em várias páginas. É útil para armazenar dados como informações de login, carrinhos de compras, etc. <br>Ex: <strong>session_start();</strong>//inicia uma sessão <strong>$_SESSION['user_id'] = 157;</strong></li>
+  
+      <li><strong>$_COOKIE</strong>: Contem todos os cookies enviados pelo navegador do usuário. São pequenos dados armazenados localmente e são frequentemente usados para lembrar preferências ou informações de login. <br>Ex: Se houver um cookie chamado "preferencia" definido no navegador, pode ser acessado usando <strong>$_COOKIE['preferencia'];</strong></li>
+  
+      <li><strong>$_FILES</strong>: Usada para coletar informações sobre arquivos enviados por formulários. Ela fornece detalhes sobre o arquivo, como nome, tipo e local temporário no servidor. <br>Ex: <strong>enctype = "multipart/form-data"</strong></li>
+  
+      <li><strong>$_SERVER</strong>: Fornece informações sobre o servidor web, a solicitação HTTP e o ambiente em que o seu script PHP está sendo executado. <br>Ex: <strong>$_SERVER['REMOTE_ADDR']; //endereço de IP do usuário da página</strong></li>
+  
+      <li><strong>$_ENV</strong>: Contem variáveis de ambiente definidas no servidor. Elas podem ser úteis para acessar configurações específicas do ambiente em que o PHP está sendo executado. <br>Ex: Se hover uma variável de ambiente chamada "DATABASE_PASSWORD", pode acessa-la usando <strong>$_ENV["DATABASE_PASSWORD"];</strong></li>
+    </ol>
+    <section>
+      <h3>Informe os dados e envie para ver exemplos de Superglobais</h3>
+      <form action="superglobais.php?tipo=Aluno&turno=Noite" method="post">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome">
+        <label for="idade">Idade</label>
+        <input type="number" name="idade" id="idade">
+        <input type="submit" value="Enviar">
+      </form>
+    </section>
+  </main>
+
 </body>
 </html>
