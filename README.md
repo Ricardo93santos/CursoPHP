@@ -1,8 +1,8 @@
 # CursoPHP
  Repositório criado para o curso de PHP
-<p>Sumário</p>
+<h3>Sumário</h3>
+<h4>Aulas:</h4>
 <ol>
-  <h3>Aulas:</h3>
   <li><a href="https://github.com/Ricardo93santos/CursoPHP/tree/main/Aulas/aula000-primeiro-codigo-no-php">Primeiro Codigo no PHP</a></li>
   <li><a href="https://github.com/Ricardo93santos/CursoPHP/tree/main/Aulas/aula001-data-e-hora">Data e Hora</a></li>
   <li><a href="https://github.com/Ricardo93santos/CursoPHP/tree/main/Aulas/aula002-variaveis-e-constantes">Variáveis e Constantes</a></li>
