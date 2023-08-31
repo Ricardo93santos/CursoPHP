@@ -1,7 +1,6 @@
 # CursoPHP
  Repositório criado para o curso de PHP
 <p>Sumário</p>
-<hr>
 <ol>
   <h3>Aulas:</h3>
   <li><a href="https://github.com/Ricardo93santos/CursoPHP/tree/main/Aulas/aula000-primeiro-codigo-no-php">Primeiro Codigo no PHP</a></li>
