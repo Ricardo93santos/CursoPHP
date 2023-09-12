@@ -113,7 +113,58 @@
       </ol>
   </section>
   <section>
-    <h2>Como inserir elementos em um array</h2>
+    <h2>Inserindo e removendo elementos em um array</h2>
+    <p>No PHP podemos inserir ou remover qualquer elemento em um arrya, após o mesmo ser criado. Podemos inserir no final do array, no início do array ou em qualquer posição específica.</p>
+    <ul>
+      <li><strong>Inserindo no final do array:</strong> Pode adicionar um elemento ao final de um array indexado usando colchetes vazios '[]' sem especificar um índice. Para arrays associativos, você pode adicionar um novo par chave-valor diretamente.
+      <pre>
+      Exemplo para array indexado:
+      $frutas = ["maçã", "banana", "laranja"];
+      var_dump($frutas); //Saída: array(3) { [0]=> string(6) "maçã" [1]=> string(6) "banana" [2]=> string(7) "laranja" }
+
+      $frutas[] = "morango"; // Adiciona "morango" ao final do array
+
+      var_dump($frutas); //Saída: array(4) { [0]=> string(6) "maçã" [1]=> string(6) "banana" [2]=> string(7) "laranja" [3]=> string(7) "morango" }
+      </pre>
+      <pre>
+      Exemplo para array associativo:
+      $aluno = [
+        "nome" => "João",
+        "idade" => 25,
+      ];
+      var_dump($aluno); // Saída: array(2) { ["nome"]=> string(5) "João" ["idade"]=> int(25) }
+
+      $aluno["curso"] = "PHP"; // Adiciona a chave "curso" com o valor "PHP"
+
+      var_dump($aluno); // Saída: array(3) { ["nome"]=> string(5) "João" ["idade"]=> int(25) ["curso"]=> string(3) "PHP" }
+      </pre>
+    </li>
+    <li><strong>Substituindo em uma posição específica:</strong> Você pode inserir um elemento em uma posição específica de um array indexado usando o operador de atribuição '=' e especificando o índice desejado.
+    <pre>
+    Ex:
+    $frutas = ["pera", "uva", "goiaba"];
+    var_dump($frutas); //Saída: array(3) { [0]=> string(4) "pera" [1]=> string(3) "uva" [2]=> string(6) "goiaba" }
+
+    $frutas[1] = "laranja"; //Substitui "uva" por "laranja" no índice 1
+    var_dump($frutas); //Saída: array(3) { [0]=> string(4) "pera" [1]=> string(7) "laranja" [2]=> string(6) "goiaba" }
+    </pre>
+    </li>
+    <li><strong>Adicionar um elemento em um índice específico do array sem remover o item existente:</strong> Para adicionar um elemento em um índice específico do array sem remover o item existente, você pode fazer isso usando a função 'array_splice()'. Sua sintaxe é a seguinte:
+    <pre>
+    array_splices($array_que_sera_adicionado, $indice_onde_sera_adicionado, 0, $elemento_adicionado);
+
+    Obs: O terceiro argumento (0) especifica que nenhum elemento existente será removido, e os elementos existentes serão deslocados para acomodar o novo valor. 
+    </pre>
+    <pre>
+    Ex:
+    $frutas = ["pera", "uva", "goiaba"];
+    var_dump($frutas); //Saída: array(3) { [0]=> string(4) "pera" [1]=> string(3) "uva" [2]=> string(6) "goiaba" }
+    
+    array_splice($frutas, 1, 0, "laranja");
+    var_dump($frutas); //Saída: array(4) { [0]=> string(4) "pera" [1]=> string(7) "laranja" [2]=> string(3) "uva" [3]=> string(6) "goiaba" }
+    </pre>
+    </li>
+    </ul>
   </section>
 </body>
 </html>
