@@ -18,4 +18,5 @@
   <li><a href="https://github.com/Ricardo93santos/CursoPHP/tree/main/Aulas/aula010-superglobais">Superglobais</a></li>
   <li><a href="https://github.com/Ricardo93santos/CursoPHP/tree/main/Aulas/aula011-obter-dados-de-formularios">Obter dados de Formulários</a></li>
   <li><a href="https://github.com/Ricardo93santos/CursoPHP/tree/main/Aulas/aula012-formulario-retroalimentado">Formulários Retroalimentados</a></li>
+  <li><a href="https://github.com/Ricardo93santos/CursoPHP/tree/main/Aulas/aula015-arrays">Arrays</a></li>
 </ol>
