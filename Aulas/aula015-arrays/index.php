@@ -164,7 +164,100 @@
     var_dump($frutas); //Saída: array(4) { [0]=> string(4) "pera" [1]=> string(7) "laranja" [2]=> string(3) "uva" [3]=> string(6) "goiaba" }
     </pre>
     </li>
+    <li><strong>Inserindo no início do array:</strong> Para adicionar um elemento no início de um array indexado, você pode usar a função 'array_unshift()'. Para arrays associativos, você precisa criar um novo array com a chave desejada e mesclar com o array existente.
+    <pre>
+    Exemplo de array indexado:
+
+    $frutas = ["maçã", "banana", "laranja"];
+    array_unshift($frutas, "morango"); // Adiciona "morango" no início do array
+
+    var_dump($frutas); //Saída: array(4) { [0]=> string(7) "morango" [1]=> string(6) "maçã"[2]=> string(6) "banana" [3]=> string(7) "laranja" }
+    </pre>
+    <pre>
+    Exemplo de array associativo:
+
+    $aluno = [
+    "nome" => "João",
+    "idade" => 25,
+    ];
+    $aluno = ["curso" => "PHP"] + $aluno; // Adiciona a chave "curso" no início
+
+    var_dump($aluno) //Saída: array(3) { ["curso"]=> string(3) "PHP" ["nome"]=> string(5) "João" ["idade"]=> int(25) }
+    </pre>
+    </li>
+    <li><strong>Removendo pelo índice ou chave:</strong> Para remover um elemento de um array associativo ou indexado, basta usar a função 'unset()', especificando a chave ou o índice.
+    <pre>
+    Exemplo com array associativo:
+
+    $aluno = [
+    "nome" => "João",
+    "idade" => 25,
+    "curso" => "PHP"
+    ];
+
+    unset($aluno["idade"]);
+
+    var_dump($aluno); //Saída: array(2) { ["nome"]=> string(5) "João" ["curso"]=> string(3) "PHP" }
+    </pre>
+    <pre>
+    Exemplo para array indexado:
+
+    $frutas = ["maçã", "banana", "laranja"];
+    unset($frutas[1]);
+
+    var_dump($frutas); //Saída:   array(2) { [0]=> string(6) "maçã" [2]=> string(7) "laranja" }
+    </pre>
+    </li>
+    <li><strong>Removendo o último elemento:</strong> Para remover o último elemento de um array indexado, você pode usar a função 'array_pop()'. Ela remove o elemento com o maior índice numérico e ajusta os índices automaticamente.
+    <pre>
+    Exemplo para array indexado:
+
+    $frutas = ["maçã", "banana", "laranja"];
+    array_pop($frutas);
+
+    var_dump($frutas); //Saída: array(2) { [0]=> string(6) "maçã" [1]=> string(6) "banana" }
+    </pre>
+    <p>Para remover o último elemento de um array associativo a maneira mais simples de fazer isso é usando a função 'array_slice()' para criar um novo array excluindo o último elemento.</p>
+    <pre>
+    Exemplo:
+    $aluno = [
+      "nome" => "João",
+      "idade" => 25,
+      "curso" => "PHP",
+    ];
+
+    $aluno = array_slice($aluno, 0, -1);
+
+    var_dump($aluno); //Saída: array(2) { ["nome"]=> string(5) "João" ["idade"]=> int(25) }
+    </pre>
+    <p>Neste exemplo, 'array_slice()' é usado para criar um novo array excluindo o último elemento. O terceiro argumento '-1' indica que queremos excluir o último elemento do array. Isso resultará em um novo array associativo sem o último elemento. Para remover o último elemento do array original, você pode atribuir o resultado de 'array_slice()' de volta à variável original, como no exemplo acima.</p>
+    </li>
+    <li><strong>Removendo o primeiro elemento:</strong> Para remover o primeiro elemento de um array indexado ou associativo, você pode usar a função 'array_shift()'. Ela remove o elemento e retorna o valor removido.
+    <pre>
+    Exemplo para array indexado:
+    $frutas = ["maçã", "banana", "laranja"];
+    array_shift($frutas);
+
+    var_dump($frutas) //Saída: array(2) { [0]=> string(6) "banana" [1]=> string(7) "laranja" }
+    </pre>
+    <pre>
+    Exemplo para array associativo:
+
+    $aluno = [
+      "nome" => "João",
+      "idade" => 25,
+      "curso" => "PHP",
+    ];
+    array_shift($aluno);
+
+    var_dump($aluno); //Saída: array(2) { ["idade"]=> int(25) ["curso"]=> string(3) "PHP" }
+    </pre>
+    </li>
     </ul>
+  </section>
+  <section>
+    <h2>Como percorrer um array</h2>
+    <p>Você pode percorrer um array de várias maneiras, mas as mais comuns são usando loops 'for', 'foreach' e funções de iteração como 'array_map()' e 'array_filter()'.</p>
   </section>
 </body>
 </html>
