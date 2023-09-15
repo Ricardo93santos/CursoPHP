@@ -258,6 +258,88 @@
   <section>
     <h2>Como percorrer um array</h2>
     <p>Você pode percorrer um array de várias maneiras, mas as mais comuns são usando loops 'for', 'foreach' e funções de iteração como 'array_map()' e 'array_filter()'.</p>
+    <ol>
+      <li><strong>Usando Loops</strong>
+        <ul>
+          <li><strong>Loop 'for' (para arrays indexados):</strong> O loop for é útil quando você tem um array indexado e sabe o número de elementos que deseja percorrer.
+          <pre>
+          Exemplo com array indexado:
+          $frutas = ["maçã", "banana", "laranja"];
+
+          for ($i = 0; $i < count($frutas); $i++) {
+            echo $frutas[$i] . "<br>";
+          }
+          </pre>
+          <p>A função 'count()' é usada para verificar o comprimento (ou seja, o número de elementos) de um array. Em outras palavras, 'count($frutas)' retornará o número de elementos no array, que, no caso, é 3, já que o array '$frutas' contém três elementos: "maçã", "banana" e "laranja". Portanto, o loop 'for' irá iterar três vezes, uma vez para cada elemento no array.</p>
+          </li>
+          <li><strong>Loop 'foreach' (para arrays associativos e indexados):</strong> O loop 'foreach' é muito flexível e é usado para percorrer tanto arrays associativos quanto indexados. Ele simplifica o processo de iteração, pois você não precisa se preocupar com índices ou chaves. Sua sintaxe básica é a seguinte:
+          <pre>
+          foreach ($array as $valor) {
+            // Código a ser executado para cada $valor
+          }
+          </pre>
+          <ol>
+            <li>'foreach': Esta é a palavra-chave que inicia a estrutura do loop.</li>
+            <li>'$array': Esta é a variável que você está percorrendo. Ela deve ser um array ou um objeto iterável.</li>
+            <li>'as': A palavra-chave "as" é usada para atribuir o valor atual do elemento do array ou membro do objeto a uma variável temporária (você pode escolher qualquer nome para essa variável). Essa variável temporária será usada dentro do bloco de código do loop.</li>
+            <li>'$valor': É a variável temporária que você cria para armazenar o valor atual do elemento do array ou membro do objeto a cada iteração.</li>
+          </ol>
+          <pre>
+          Exemplo com array indexado:
+
+          $frutas = ["maçã", "banana", "laranja"];
+
+          foreach ($frutas as $fruta) {
+            echo $fruta;
+          }
+          </pre>
+          <pre>
+          Exemplo com array associativo:
+
+          $aluno = [
+            "nome" => "João",
+            "idade" => 25,
+            "curso" => "PHP",
+          ];
+          
+          foreach($aluno as $chave => $valor){
+            echo "$chave: $valor";
+          }
+          </pre>
+          <p>No exemplo acima, o 'foreach' itera sobre o array, atribuindo automaticamente cada valor a '$fruta' (no caso de um array indexado) ou a '$chave' e '$valor' (no caso de um array associativo).</p>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Usando Funções de iteração</strong>
+        <ul>
+          <li><strong>'array_map()' (para transformar os elementos do array):</strong> A função 'array_map()' permite aplicar uma função a cada elemento de um array e retornar um novo array com os resultados.
+          <pre>
+          Exemplo:
+
+          $frutas = ["maçã", "banana", "laranja"];
+          
+          $frutas_em_maiusculas = array_map('strtoupper', $frutas);
+          print($frutas_em_maiusculas);
+          </pre>
+          <p>Neste exemplo, 'array_map()' é usada para converter todas as frutas em letras maiúsculas.</p>
+          </li>
+          <li><strong>'array_filter()' (para filtrar elementos do array):</strong> A função 'array_filter()' permite filtrar elementos de um array com base em uma função de callback.
+          <pre>
+          Exemplo:
+
+          $idades = [22, 30, 18, 25, 16];
+
+          $adultos = array_filter($idades, function ($idade) {
+            return $idade >= 18;
+          });
+
+          print($adultos);
+          </pre>
+          <p>Neste exemplo, 'array_filter()' é usada para encontrar as idades que são maiores ou iguais a 18.</p>
+          </li>
+        </ul>
+      </li>
+    </ol>
   </section>
 </body>
 </html>
